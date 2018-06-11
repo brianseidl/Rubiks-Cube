@@ -3,6 +3,11 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+*	Java code to solve a 2x2 Rubik's Cube
+*
+*	@author Brian Seidl
+*/
 public class Cube{
 	
 	/*
@@ -22,16 +27,16 @@ public class Cube{
 	private final int RIGHT = 1;
 
 	/*
-			---------
-			| W | W |
-			| W | W |
+	        ---------
+	        | W | W |
+	        | W | W |
 	|-------|-------|-------|-------|
 	| O | O | G | G | R | R | B | B |
 	| O | O | G | G | R | R | B | B |
 	|-------|-------|-------|-------|
-			| Y | Y |
-			| Y | Y |
-			---------
+	        | Y | Y |
+	        | Y | Y |
+	        s---------
 	*/
 
 	/**
@@ -41,23 +46,43 @@ public class Cube{
 	public Cube(Color[][] front, Color[][] right, Color[][] back,
 				Color[][] left, Color[][] top, Color[][] bottom){
 		
+		// intialize the cube 3D array of Cubie objects
 		for (int i=0; i < SIZE; i++)
 			for (int j=0; j < SIZE; j++)
 				for (int k=0; k < SIZE; k++)
-					cube[i][j][k] = new Cubie();
+					this.cube[i][j][k] = new Cubie();
 
-		cube[LEFT][TOP][FRONT].setTop(top[0][1]);
-		//cube[][][]
-		//cube[][][]
-		//cube[][][]
-		//cube[][][]
-		//cube[][][]
-		//cube[][][]
-		//cube[][][]
+		cube[LEFT][TOP][FRONT].setLeft(left[0][1]);
+		cube[LEFT][TOP][FRONT].setTop(top[1][0]);
+		cube[LEFT][TOP][FRONT].setFront(front[0][0]);
+		cube[RIGHT][TOP][FRONT].setRight(right[0][0]);
+		cube[RIGHT][TOP][FRONT].setTop(top[1][1]);
+		cube[RIGHT][TOP][FRONT].setFront(front[0][1]);
+		cube[LEFT][TOP][BACK].setLeft(left[0][0]);
+		cube[LEFT][TOP][BACK].setTop(top[0][0]);
+		cube[LEFT][TOP][BACK].setBack(back[0][1]);
+		cube[RIGHT][TOP][BACK].setRight(right[0][1]);
+		cube[RIGHT][TOP][BACK].setTop(top[0][1]);
+		cube[RIGHT][TOP][BACK].setBack(back[0][0]);
+		cube[LEFT][BOTTOM][FRONT].setLeft(left[1][1]);
+		cube[LEFT][BOTTOM][FRONT].setBottom(bottom[0][0]);
+		cube[LEFT][BOTTOM][FRONT].setFront(front[1][0]);
+		cube[RIGHT][BOTTOM][FRONT].setRight(right[1][0]);
+		cube[RIGHT][BOTTOM][FRONT].setBottom(bottom[0][1]);
+		cube[RIGHT][BOTTOM][FRONT].setFront(front[1][1]);
+		cube[LEFT][BOTTOM][BACK].setLeft(left[1][0]);
+		cube[LEFT][BOTTOM][BACK].setBottom(bottom[1][0]);
+		cube[LEFT][BOTTOM][BACK].setBack(back[1][1]);
+		cube[RIGHT][BOTTOM][BACK].setRight(right[1][1]);
+		cube[RIGHT][BOTTOM][BACK].setBottom(bottom[1][1]);
+		cube[RIGHT][BOTTOM][BACK].setBack(back[1][0]);
 
-		// to be continued
+		// to be tested
 	}
 
+	/**
+	*	constructor takes in a 3D Cubie array. aka the this.cube
+	*/
 	public Cube(Cubie[][][] cube){
 		this.cube = new Cubie[SIZE][SIZE][SIZE];
 		for (int i=0; i < SIZE; i++)
@@ -66,6 +91,9 @@ public class Cube{
 					this.cube[i][j][k] = new Cubie(cube[i][j][k]);
 	}
 
+	/**
+	*	copy constructor to make a new reference of a cube object
+	*/
 	public Cube(Cube c){
 		this.cube = new Cubie[SIZE][SIZE][SIZE];
 		for (int i=0; i < SIZE; i++)
@@ -80,7 +108,6 @@ public class Cube{
 	public String getSolution(int min){
 		if(isSolved())
 			return "Already Solved!";
-
 		String res = "";
 		
 		Cube r = new Cube(this.cube);
@@ -604,16 +631,16 @@ public class Cube{
 		ColorUtils c = new ColorUtils();
 
 		/*
-				---------
-				| W | W |
-				| W | W |
+		        ---------
+		        | W | W |
+		        | W | W |
 		|-------|-------|-------|-------|
 		| O | O | G | G | R | R | B | B |
 		| O | O | G | G | R | R | B | B |
 		|-------|-------|-------|-------|
-				| Y | Y |
-				| Y | Y |
-				---------
+		        | Y | Y |
+		        | Y | Y |
+		        ---------
 		*/
 		String result = "";
 		result += "        ---------\n";
@@ -647,7 +674,6 @@ public class Cube{
 
 		// scramble the cube and print scramble
 		System.out.println("\nScramble: " + cube.scramble(20));
-		Cube cube2 = new Cube(cube);
 
 		// print scrambled cube
 		System.out.println("\n      Scrambled cube\n" + cube);
@@ -657,7 +683,7 @@ public class Cube{
 		System.out.println("\nSolve: " + cube.getSolution(14));
 		double estimatedTime = (System.currentTimeMillis() - startTime) / 1000.0;
 
-		// print time of alg
+		// print time taken to generate the solve
 		System.out.println("Time: " + estimatedTime + "s");
 	}
 
