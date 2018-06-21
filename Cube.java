@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 /**
 *	Java code to solve a 2x2 Rubik's Cube
@@ -42,11 +44,13 @@ public class Cube{
 	/**
 	 * takes in 6 2D color arrays, top left at each face should be [0][0]
 	 *
+	 * TODO: Test this constructor
 	 */
-	public Cube(Color[][] front, Color[][] right, Color[][] back,
-				Color[][] left, Color[][] top, Color[][] bottom){
-		
+	public Cube(Color[][] top, Color[][] left, Color[][] front,
+				Color[][] right, Color[][] back, Color[][] bottom){
+
 		// intialize the cube 3D array of Cubie objects
+		this.cube = new Cubie[SIZE][SIZE][SIZE];
 		for (int i=0; i < SIZE; i++)
 			for (int j=0; j < SIZE; j++)
 				for (int k=0; k < SIZE; k++)
@@ -76,8 +80,6 @@ public class Cube{
 		cube[RIGHT][BOTTOM][BACK].setRight(right[1][1]);
 		cube[RIGHT][BOTTOM][BACK].setBottom(bottom[1][1]);
 		cube[RIGHT][BOTTOM][BACK].setBack(back[1][0]);
-
-		// to be tested
 	}
 
 	/**
@@ -668,27 +670,33 @@ public class Cube{
 	
 	public static void main(String[] args){
 		Scanner scan = new Scanner(System.in);
+		boolean valid;
 
-		// create solved cube object
-		Cube cube = makeSolvedCube();
+		System.out.println("Welcome to the 2x2 Rubik's Cube Solver created by Brian Seidl");
+		printOptions();
 
-		// scramble the cube and print scramble
-		System.out.println("\nScramble: " + cube.scramble(20));
+		do {
+			System.out.print(">>>");
+			String mode = scan.next();
 
-		// print scrambled cube
-		System.out.println("\n      Scrambled cube\n" + cube);
-
-		//solve cube and print solution
-		long startTime = System.currentTimeMillis();
-		System.out.println("\nSolve: " + cube.getSolution(14));
-		double estimatedTime = (System.currentTimeMillis() - startTime) / 1000.0;
-
-		// print time taken to generate the solve
-		System.out.println("Time: " + estimatedTime + "s");
+			if (mode.charAt(0) == 'A' || mode.charAt(0) == 'a'){
+				valid = true;
+				automatic();
+			}else if (mode.charAt(0) == 'M' || mode.charAt(0) == 'm'){
+				valid = true;
+				manual();
+			}else if (mode.equalsIgnoreCase("help")){
+				printOptions();
+				valid = false;
+			}else{
+				System.out.println("Mode invalid. Please enter a valid mode.");
+				valid = false;
+			}
+		} while (valid == false);
 	}
 
 	// retruns a 2x2 solved cube object with white top and green front
-	public static Cube makeSolvedCube(){
+	private static Cube makeSolvedCube(){
 		// declare constants
 		final int FRONT = 0;
 		final int BACK = 1;
@@ -742,5 +750,97 @@ public class Cube{
 		theCube[RIGHT][BOTTOM][BACK].setRight(Color.RED);
 
 		return new Cube(theCube);
+	}
+
+	private static void automatic(){
+		// create solved cube object
+		Cube cube = makeSolvedCube();
+
+		// scramble the cube and print scramble
+		System.out.println("\nScramble: " + cube.scramble(20));
+
+		// print scrambled cube
+		System.out.println("\n      Scrambled cube\n" + cube);
+
+		// solve cube and print solution
+		long startTime = System.currentTimeMillis();
+		System.out.println("\nSolve: " + cube.getSolution(14));
+		double estimatedTime = (System.currentTimeMillis() - startTime) / 1000.0;
+
+		// print time taken to generate the solve
+		System.out.println("Time: " + estimatedTime + "s");
+	}
+
+	private static void manual(){
+		// get all of the sides from the user
+		System.out.println("\nEnter the name of the color for each side of each face\n");
+		Color[][] top = getFace("Top Face");
+		Color[][] left = getFace("Left Face");
+		Color[][] front = getFace("Front Face");
+		Color[][] right = getFace("Right Face");
+		Color[][] back = getFace("Back Face");
+		Color[][] bottom = getFace("Bottom Face");
+
+		// make a Cube Object
+		Cube cube = new Cube(top, left, front, right, back, bottom);
+
+		// print scrambled cube
+		System.out.println("\n      Scrambled cube\n" + cube);
+
+		// solve cube and print solution
+		long startTime = System.currentTimeMillis();
+		System.out.println("\nSolve: " + cube.getSolution(14));
+		double estimatedTime = (System.currentTimeMillis() - startTime) / 1000.0;
+
+		// print time taken to generate the solve
+		System.out.println("Time: " + estimatedTime + "s");
+	}
+
+	private static Color[][] getFace(String faceName){
+		Color[][] face = new Color[2][2];
+		System.out.print(faceName + "\tTop Left:\t");
+		face[0][0] = getColorFromUser();
+		System.out.print(faceName + "\tTop Right:\t");
+		face[0][1] = getColorFromUser();
+		System.out.print(faceName + "\tBottom Left:\t");
+		face[1][0] = getColorFromUser();
+		System.out.print(faceName + "\tBottom Right:\t");
+		face[1][1] = getColorFromUser();
+		return face;
+	}
+
+	private static Color getColorFromUser(){
+		Dictionary<Character, Color> colors = new Hashtable<Character, Color>();
+		colors.put('B', Color.BLUE);
+		colors.put('b', Color.BLUE);
+		colors.put('G', Color.GREEN);
+		colors.put('g', Color.GREEN);
+		colors.put('O', Color.ORANGE);
+		colors.put('o', Color.ORANGE);
+		colors.put('R', Color.RED);
+		colors.put('r', Color.RED);
+		colors.put('W', Color.WHITE);
+		colors.put('w', Color.WHITE);
+		colors.put('Y', Color.YELLOW);
+		colors.put('y', Color.YELLOW);
+		boolean valid = true;
+		Scanner scan = new Scanner(System.in);
+		Color result;
+
+		do{
+			//System.out.print("Enter Color: ");
+			char curr = scan.next().charAt(0);
+			result = colors.get(curr);
+			if (colors.get(curr) == null){
+				valid = false;
+				System.out.println("Invald Color");
+			}
+		} while (valid == false);
+		return result;
+	}
+
+	private static void printOptions(){
+		System.out.println("A(utomatic)\tAutomatically generate random scramble and solve");
+		System.out.println("M(anual)\tManually enter the colors on each side and solve");
 	}
 }
