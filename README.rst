@@ -27,7 +27,7 @@ You will see options **Automatic** and **Manual**::
 	M(anual)	Manually enter the colors on each side and solve
 	>>>
 
-If you have a physical 2x2 Rubik's Cube and would like to solve it, _Manual_ will let you enter the colors on each side and solve. If you do not have a Rubik's cube you would like to solve and just want to see application run, choose _Automatic_. _Automatic_ will generate a random scramble and solve that scramble.
+If you have a physical 2x2 Rubik's Cube and would like to solve it, *Manual* will let you enter the colors on each side and solve. If you do not have a Rubik's cube you would like to solve and just want to see application run, choose *Automatic*. *Automatic* will generate a random scramble and solve that scramble.
 
 Example Output
 --------------
