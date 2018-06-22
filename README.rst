@@ -38,63 +38,93 @@ Example Output
 
 Automatic::
 
-	Scramble: R' F U' B L' U B D R' D' F U F U B L D' R B' R'
+	Scramble: L F L' F' U L' U' R' D' B' D' L B' U' B' R' B2 L' F'
 
-	      Scrambled cube
+	        Your Cube
 	        ---------
-	        | G | W |
+	        | O | G |
 	        | Y | Y |
 	|-------|-------|-------|-------|
-	| Y | R | G | B | R | B | O | O |
-	| G | W | B | R | G | B | O | W |
+	| G | R | G | O | B | W | O | Y |
+	| Y | R | G | R | W | W | O | B |
 	|-------|-------|-------|-------|
-	        | R | W |
-	        | O | Y |
+	        | W | B |
+	        | R | B |
 	        ---------
 
-	Solve: R' U F U' R F2 U' F' U
-	Time: 43.123s
+	Solve: F' U' F' U F R'
+	Time: 3.678s
 
 Manual::
 
 	Enter the name of the color for each side of each face
 
-	Top Face	Top Left:	green
-	Top Face	Top Right:	white
-	Top Face	Bottom Left:	yellow
-	Top Face	Bottom Right:	yellow
-	Left Face	Top Left:	yellow
-	Left Face	Top Right:	red
-	Left Face	Bottom Left:	green
-	Left Face	Bottom Right:	white
-	Front Face	Top Left:	green
-	Front Face	Top Right:	blue
-	Front Face	Bottom Left:	blue
-	Front Face	Bottom Right:	red
-	Right Face	Top Left:	red
-	Right Face	Top Right:	blue
-	Right Face	Bottom Left:	green
-	Right Face	Bottom Right:	blue
-	Back Face	Top Left:	orange
-	Back Face	Top Right:	orange
-	Back Face	Bottom Left:	orange
-	Back Face	Bottom Right:	white
-	Bottom Face	Top Left:	red
-	Bottom Face	Top Right:	white
-	Bottom Face	Bottom Left:	orange
-	Bottom Face	Bottom Right:	yellow
+	        Your Cube
+	        ---------
+	        |   |   |
+	        |   |   |
+	|-------|-------|-------|-------|
+	|   |   |   |   |   |   |   |   |
+	|   |   |   |   |   |   |   |   |
+	|-------|-------|-------|-------|
+	        |   |   |
+	        |   |   |
+	        ---------
+
+	Top Face	Top Left:	o
+	Top Face	Top Right:	g
+	Top Face	Bottom Left:	y
+	Top Face	Bottom Right:	y
+
+	        Your Cube
+	        ---------
+	        | O | G |
+	        | Y | Y |
+	|-------|-------|-------|-------|
+	|   |   |   |   |   |   |   |   |
+	|   |   |   |   |   |   |   |   |
+	|-------|-------|-------|-------|
+	        |   |   |
+	        |   |   |
+	        ---------
+
+	Left Face	Top Left:	g
+	Left Face	Top Right:	r
+	Left Face	Bottom Left:	y
+	Left Face	Bottom Right:	r
+
+	        Your Cube
+	        ---------
+	        | O | G |
+	        | Y | Y |
+	|-------|-------|-------|-------|
+	| G | R |   |   |   |   |   |   |
+	| Y | R |   |   |   |   |   |   |
+	|-------|-------|-------|-------|
+	        |   |   |
+	        |   |   |
+	        ---------
+
+	Front Face	Top Left:	
+
+	...
+
+	Bottom Face	Top Left:	w
+	Bottom Face	Top Right:	b
+	Bottom Face	Bottom Left:	r
+	Bottom Face	Bottom Right:	b
 
 	      Scrambled cube
 	        ---------
-	        | G | W |
+	        | O | G |
 	        | Y | Y |
 	|-------|-------|-------|-------|
-	| Y | R | G | B | R | B | O | O |
-	| G | W | B | R | G | B | O | W |
+	| G | R | G | O | B | W | O | Y |
+	| Y | R | G | R | W | W | O | B |
 	|-------|-------|-------|-------|
-	        | R | W |
-	        | O | Y |
+	        | W | B |
+	        | R | B |
 	        ---------
 
-	Solve: R' U F U' R F2 U' F' U
-	Time: 42.604s
+	Solve: F' U' F' U F R'
+	Time: 3.056s
