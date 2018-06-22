@@ -16,7 +16,7 @@ Change directory::
 
 Then compile all of the classes::
 
-	$ javac Cube.java Cubie.java ColorUtils.java
+	$ javac *.java
 
 Running
 -------
