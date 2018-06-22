@@ -1,3 +1,4 @@
+==========
 Rubiks-Cube
 ===========
 
@@ -36,7 +37,8 @@ If you have a physical 2x2 Rubik's Cube and would like to solve it, *Manual* wil
 Example Output
 --------------
 
-Automatic::
+**Automatic**
+::
 
 	Scramble: L F L' F' U L' U' R' D' B' D' L B' U' B' R' B2 L' F'
 
@@ -55,7 +57,11 @@ Automatic::
 	Solve: F' U' F' U F R'
 	Time: 3.678s
 
-Manual::
+**Manual**
+
+- *Note*, when entering the color, you can either enter the full name of the color of just the first letter of the color. Valid colors are red, orange, yellow, green, blue, and white
+
+::
 
 	Enter the name of the color for each side of each face
 
