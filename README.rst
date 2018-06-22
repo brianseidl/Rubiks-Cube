@@ -58,7 +58,7 @@ Example Output
 
 **Manual**
 
-- *Note*, when entering the color, you can either enter the full name of the color of just the first letter of the color. Valid colors are red, orange, yellow, green, blue, and white
+- Note, when entering the color, you can either enter the full name of the color of just the first letter of the color. Valid colors are red, orange, yellow, green, blue, and white.
 
 ::
 
@@ -76,10 +76,10 @@ Example Output
 	        |   |   |
 	        ---------
 
-	Top Face	Top Left:	o
-	Top Face	Top Right:	g
-	Top Face	Bottom Left:	y
-	Top Face	Bottom Right:	y
+	Top Face	Top Left:	orange
+	Top Face	Top Right:	green
+	Top Face	Bottom Left:	yellow
+	Top Face	Bottom Right:	yellow
 
 	        Your Cube
 	        ---------
@@ -112,10 +112,10 @@ Example Output
 
 	...
 
-	Bottom Face	Top Left:	w
-	Bottom Face	Top Right:	b
-	Bottom Face	Bottom Left:	r
-	Bottom Face	Bottom Right:	b
+	Bottom Face	Top Left:	W
+	Bottom Face	Top Right:	B
+	Bottom Face	Bottom Left:	R
+	Bottom Face	Bottom Right:	B
 
 	      Scrambled cube
 	        ---------
