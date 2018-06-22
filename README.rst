@@ -10,6 +10,10 @@ To install, first clone the repository::
 
 	$ git clone git@github.com:brianseidl/Rubiks-Cube.git
 
+Change directory::
+
+	$ cd Rubiks-Cube/
+
 Then compile all of the classes::
 
 	$ javac Cube.java Cubie.java ColorUtils.java
@@ -17,7 +21,7 @@ Then compile all of the classes::
 Running
 -------
 
-To start the application, execute the Cube class::
+To run the application, execute the main method of the Cube class::
 
 	$ java Cube
 

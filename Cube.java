@@ -6,10 +6,13 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 /**
-*	Java code to solve a 2x2 Rubik's Cube
-*
-*	@author Brian Seidl
-*/
+ *	Java code to solve a 2x2 Rubik's Cube
+ * 	https://github.com/brianseidl/Rubiks-Cube
+ *
+ * 	TODO: fix javadoc
+ *
+ *	@author Brian Seidl
+ */
 public class Cube{
 	
 	/*
@@ -43,8 +46,6 @@ public class Cube{
 
 	/**
 	 * takes in 6 2D color arrays, top left at each face should be [0][0]
-	 *
-	 * TODO: Test this constructor
 	 */
 	public Cube(Color[][] top, Color[][] left, Color[][] front,
 				Color[][] right, Color[][] back, Color[][] bottom){
@@ -695,7 +696,9 @@ public class Cube{
 		} while (valid == false);
 	}
 
-	// retruns a 2x2 solved cube object with white top and green front
+	/**
+	 * retruns a 2x2 solved cube object with white top and green front
+	 */
 	private static Cube makeSolvedCube(){
 		// declare constants
 		final int FRONT = 0;
@@ -752,6 +755,9 @@ public class Cube{
 		return new Cube(theCube);
 	}
 
+	/**
+	 * automatic mode generates a scramble automatically
+	 */
 	private static void automatic(){
 		// create solved cube object
 		Cube cube = makeSolvedCube();
@@ -771,6 +777,9 @@ public class Cube{
 		System.out.println("Time: " + estimatedTime + "s");
 	}
 
+	/**
+	 * manual mode where user enters the colors manually
+	 */
 	private static void manual(){
 		// get all of the sides from the user
 		System.out.println("\nEnter the name of the color for each side of each face\n");
@@ -796,6 +805,9 @@ public class Cube{
 		System.out.println("Time: " + estimatedTime + "s");
 	}
 
+	/**
+	 * Helper method for manual
+	 */
 	private static Color[][] getFace(String faceName){
 		Color[][] face = new Color[2][2];
 		System.out.print(faceName + "\tTop Left:\t");
@@ -808,7 +820,10 @@ public class Cube{
 		face[1][1] = getColorFromUser();
 		return face;
 	}
-
+	
+	/**
+	 * Helper method for getFace
+	 */
 	private static Color getColorFromUser(){
 		Dictionary<Character, Color> colors = new Hashtable<Character, Color>();
 		colors.put('B', Color.BLUE);
@@ -828,7 +843,6 @@ public class Cube{
 		Color result;
 
 		do{
-			//System.out.print("Enter Color: ");
 			char curr = scan.next().charAt(0);
 			result = colors.get(curr);
 			if (colors.get(curr) == null){
