@@ -105,8 +105,6 @@ Manual::
 	        |   |   |
 	        ---------
 
-	Front Face	Top Left:	
-
 	...
 
 	Bottom Face	Top Left:	w
