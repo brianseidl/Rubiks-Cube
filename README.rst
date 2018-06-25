@@ -23,7 +23,7 @@ Running
 
 To run the application, execute the main method of the Cube class::
 
-	$ java Cube
+	$ java Main
 
 You will see options **Automatic** and **Manual**::
 
