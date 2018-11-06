@@ -110,7 +110,9 @@ Example Output
 	        |   |   |
 	        ---------
 
-	...
+	.
+	.
+	.
 
 	Bottom Face	Top Left:	W
 	Bottom Face	Top Right:	B
