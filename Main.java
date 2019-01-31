@@ -11,6 +11,7 @@ public class Main{
 		System.out.println("Welcome to the 2x2 Rubik's Cube Solver created by Brian Seidl");
 		printOptions();
 
+		//Prompts user to pick mode
 		do {
 			System.out.print(">>>");
 			String mode = scan.next();
